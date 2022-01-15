@@ -37,16 +37,18 @@
     "react-router-dom": "^6.0.2",
     "react-scripts": "^4.0.3",
     "web-vitals": "^1.1.2",
-    "xml2js": "^0.4.23"
+    "xml2js": "^0.4.23",
+    "yarn": "^1.22.17"
   },
   "engines": {
     "node": "16.13.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start-client": "react-scripts start",
+    "build": "react-scripts build && (cd functions && npm install)",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start": "cd functions && npm start"
   },
   "eslintConfig": {
     "extends": [
@@ -65,10 +67,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@babel/core": "^7.16.7",
-    "@babel/preset-env": "^7.16.8",
-    "@babel/preset-react": "^7.16.7"
   }
 }

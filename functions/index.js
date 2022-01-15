@@ -27,28 +27,28 @@ app.set('port', port);
  */
 
 
-app.use(express.static(path.join(__dirname, 'build')))
+app.use(express.static(path.join(__dirname, '..', 'build')))
 
 app.use(express.json());
 app.use(fileUpload())
-const cors = require("cors");
+// const cors = require("cors");
 // const { getAllCartas, postCarta, getCartaById, updateCarta, deleteCarta } = require('./routes/cartas');
 
-app.use(cors());
-const list =  [
-  "http://localhost:3000",
-  "http://192.168.100.110:3000",
-  "https://ferbytransportes.com"
-]
+// app.use(cors());
+// const list =  [
+//   "http://localhost:3000",
+//   "http://192.168.100.110:3000",
+//   "https://ferbytransportes.com"
+// ]
 // const local = list[0]
-const fervyOffice = list[1] 
-const home = list[0] 
-const production = list[2] 
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin",home);
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-}); 
+// const fervyOffice = list[1] 
+// const home = list[0] 
+// const production = list[2] 
+// app.use((req, res, next) => {
+//     res.header("Access-Control-Allow-Origin",home);
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+// }); 
 
 
 const roles = {
@@ -81,7 +81,7 @@ app.use('/auth',authRouter);
 // app.post('/api/porte', isAuthenticated, isAuthorized(roles.user), cartaPorte)
 
 app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'))
+    res.sendFile(path.join(__dirname, '..', 'build', 'index.html'))
 })
 
 var server = http.createServer(app);
