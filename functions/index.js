@@ -36,36 +36,39 @@ app.use(fileUpload())
 
 // app.use(cors());
 // const list =  [
-//   "http://localhost:3000",
-//   "http://192.168.100.110:3000",
-//   "https://ferbytransportes.com"
-// ]
-// const local = list[0]
-// const fervyOffice = list[1] 
-// const home = list[0] 
-// const production = list[2] 
-// app.use((req, res, next) => {
-//     res.header("Access-Control-Allow-Origin",home);
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//     next();
-// }); 
-
-
-const roles = {
-    admin: ['admin'], // Only SA & Admin has access
-    driver: ['admin', 'driver'], // Only SA & Admin & Editor has access
-    user: ['admin', 'user'], // Everyone has access
-}
-
-
-/* 
-* CRUD de cartas porte 
-*/
-// app.use('/carta',  isAuthenticated, isAuthorized(roles.user),cartasRouter)
-app.use('/carta',  cartasRouter)
-app.use('/service', serviceRouter)
-// app.use('/service',  isAuthenticated, isAuthorized(roles.user),serviceRouter)
-// app.use('/register',  isAuthenticated, isAuthorized(roles.user),registerRouter)
+  //   "http://localhost:3000",
+  //   "http://192.168.100.110:3000",
+  //   "https://ferbytransportes.com"
+  // ]
+  // const local = list[0]
+  // const fervyOffice = list[1] 
+  // const home = list[0] 
+  // const production = list[2] 
+  // app.use((req, res, next) => {
+    //     res.header("Access-Control-Allow-Origin",home);
+    //     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    //     next();
+    // }); 
+    
+    
+    const roles = {
+      admin: ['admin'], // Only SA & Admin has access
+      driver: ['admin', 'driver'], // Only SA & Admin & Editor has access
+      user: ['admin', 'user'], // Everyone has access
+    }
+    
+    
+    /* 
+    * CRUD de cartas porte 
+    */
+   app.get('/', (req, res) => {
+       res.sendFile(path.join(__dirname, '..', 'build', 'index.html'))
+   })
+   // app.use('/carta',  isAuthenticated, isAuthorized(roles.user),cartasRouter)
+   app.use('/carta',  cartasRouter)
+   app.use('/service', serviceRouter)
+   // app.use('/service',  isAuthenticated, isAuthorized(roles.user),serviceRouter)
+   // app.use('/register',  isAuthenticated, isAuthorized(roles.user),registerRouter)
 app.use('/register',registerRouter)
 /*
 * QUERIES
@@ -80,9 +83,6 @@ app.use('/auth',authRouter);
 // app.put("/carta/:id", isAuthenticated, isAuthorized(roles.user), validateCartaPorte, updateCarta);
 // app.post('/api/porte', isAuthenticated, isAuthorized(roles.user), cartaPorte)
 
-app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'build', 'index.html'))
-})
 
 var server = http.createServer(app);
 
