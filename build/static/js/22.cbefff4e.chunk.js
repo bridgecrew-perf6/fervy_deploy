@@ -1,0 +1,2 @@
+(this["webpackJsonpferby-app"]=this["webpackJsonpferby-app"]||[]).push([[22],{337:function(p,t,e){"use strict";e.r(t);e(0);var s=e(2);t.default=function(){return Object(s.jsx)("div",{})}}}]);
+//# sourceMappingURL=22.cbefff4e.chunk.js.map
