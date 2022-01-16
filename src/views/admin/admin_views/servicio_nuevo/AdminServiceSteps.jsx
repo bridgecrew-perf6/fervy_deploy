@@ -50,6 +50,8 @@ const SelectOperator = () => {
     const [operatorRows, setOperatorRows] = useState([])
     const [loading, setLoading] = useState(true)
     // const columns = operators_col
+    console.log(window.location.href)
+    
     const table = {
     columns:[
         operators_col[0],
