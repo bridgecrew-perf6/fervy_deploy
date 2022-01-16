@@ -66,7 +66,7 @@ const SelectOperator = () => {
 
     useEffect(() => {
         const getData = async () => {
-        let operatorData =  await axios.get(`${ip}/data/operators`)
+        let operatorData =  await axios.get(`/data/operators`)
         return operatorData
         }
         getData()
