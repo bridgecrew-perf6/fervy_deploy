@@ -40,9 +40,6 @@
     "xml2js": "^0.4.23",
     "yarn": "^1.22.17"
   },
-  "engines": {
-    "node": "16.13.0"
-  },
   "scripts": {
     "start-client": "react-scripts start",
     "build": "react-scripts build && (cd functions && npm install)",
