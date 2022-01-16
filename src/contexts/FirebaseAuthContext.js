@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useReducer } from 'react'
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
-import FerbyLoading from '../ /FerbyLoading/FerbyLoading'
+import FerbyLoading from '../components/FerbyLoading/FerbyLoading'
 import api from '../axios';
 
 const firebaseConfig = {
