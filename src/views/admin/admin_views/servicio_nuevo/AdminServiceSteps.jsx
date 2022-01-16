@@ -13,10 +13,11 @@ import history from '../../../../history'
 
 let router = [
     "192.168.100.110",
-    "localhost"
+    "localhost",
+    window.location.href
 ]
 
-const ip = router[1]
+const ip = router[2]
 
 
 let datosPorte = {
@@ -65,7 +66,7 @@ const SelectOperator = () => {
 
     useEffect(() => {
         const getData = async () => {
-        let operatorData =  await axios.get(`http://${ip}:8000/data/operators`)
+        let operatorData =  await axios.get(`http://${ip}/data/operators`)
         return operatorData
         }
         getData()

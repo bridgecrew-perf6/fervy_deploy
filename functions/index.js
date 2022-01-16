@@ -1,15 +1,5 @@
 const express = require("express");
 const app = express();
-const { 
-    isAuthorized, 
-    isAuthenticated, 
-    validateCartaPorte, 
-    authRouter 
-} = require('./routes/auth'); 
-const cartasRouter = require('./routes/cartas');
-const serviceRouter = require('./routes/services')
-const registerRouter = require('./routes/register')
-const dataRouter = require('./routes/data')
 const fileUpload = require('express-fileupload')
 const path = require('path')
 
@@ -18,6 +8,19 @@ var http = require('http');
 /**
  * Get port from environment and store in Express.
  */
+
+const { 
+  isAuthorized, 
+  isAuthenticated, 
+  validateCartaPorte, 
+  authRouter 
+} = require('./routes/auth')(app); 
+const cartasRouter = require('./routes/cartas')(app);
+const serviceRouter = require('./routes/services')(app)
+const registerRouter = require('./routes/register')(app)
+const dataRouter = require('./routes/data')(app)
+
+
 
 var port = normalizePort(process.env.PORT);
 app.set('port', port);
@@ -33,10 +36,10 @@ app.use(express.static(buildPath))
 
 app.use(express.json());
 app.use(fileUpload())
-// const cors = require("cors");
+const cors = require("cors");
 // const { getAllCartas, postCarta, getCartaById, updateCarta, deleteCarta } = require('./routes/cartas');
 
-// app.use(cors());
+app.use(cors());
 // const list =  [
   //   "http://localhost:3000",
   //   "http://192.168.100.110:3000",
@@ -73,12 +76,12 @@ app.use(fileUpload())
    app.use('/service', serviceRouter)
    // app.use('/service',  isAuthenticated, isAuthorized(roles.user),serviceRouter)
    // app.use('/register',  isAuthenticated, isAuthorized(roles.user),registerRouter)
-app.use('/register',registerRouter)
+  app.use('/register',registerRouter)
 /*
 * QUERIES
  */ 
 // app.use('/data',  isAuthenticated, isAuthorized(roles.user),operatorsRouter)
-app.use('/data',dataRouter)
+app.use('*/data',dataRouter)
 app.use('/auth',authRouter);
 // app.get("/carta", isAuthenticated, isAuthorized(roles.user), getAllCartas);
 // app.get("/carta/:id", isAuthenticated, isAuthorized(roles.user), getCartaById);
