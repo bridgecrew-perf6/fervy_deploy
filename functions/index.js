@@ -27,7 +27,9 @@ app.set('port', port);
  */
 
 
-app.use(express.static(path.join(__dirname, '..', 'build')))
+const buildPath = path.join(__dirname, '..', 'build')
+   
+app.use(express.static(buildPath))
 
 app.use(express.json());
 app.use(fileUpload())
@@ -57,13 +59,15 @@ app.use(fileUpload())
       user: ['admin', 'user'], // Everyone has access
     }
     
+
+    //*routing in production
+    app.get('/*', (req, res) => {
+      res.sendFile(path.join(__dirname, '..', 'build', 'index.html')) 
+    })
     
     /* 
     * CRUD de cartas porte 
     */
-   const buildPath = path.join(__dirname, '..', 'build')
-   
-   app.use(express.static(buildPath))
    // app.use('/carta',  isAuthenticated, isAuthorized(roles.user),cartasRouter)
    app.use('/carta',  cartasRouter)
    app.use('/service', serviceRouter)
