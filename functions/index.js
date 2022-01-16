@@ -61,9 +61,9 @@ app.use(fileUpload())
     /* 
     * CRUD de cartas porte 
     */
-   app.get('', (req, res) => {
-       res.sendFile(path.join(__dirname, '..', 'build'))
-   })
+   const buildPath = path.join(__dirname, '..', 'build')
+   
+   app.use(express.static(buildPath))
    // app.use('/carta',  isAuthenticated, isAuthorized(roles.user),cartasRouter)
    app.use('/carta',  cartasRouter)
    app.use('/service', serviceRouter)
