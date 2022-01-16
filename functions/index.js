@@ -61,7 +61,7 @@ app.use(fileUpload())
     /* 
     * CRUD de cartas porte 
     */
-   app.get('/', (req, res) => {
+   app.get('', (req, res) => {
        res.sendFile(path.join(__dirname, '..', 'build', 'index.html'))
    })
    // app.use('/carta',  isAuthenticated, isAuthorized(roles.user),cartasRouter)
