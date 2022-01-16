@@ -14,11 +14,11 @@ const {
   isAuthenticated, 
   validateCartaPorte, 
   authRouter 
-} = require('./routes/auth')(app); 
-const cartasRouter = require('./routes/cartas')(app);
-const serviceRouter = require('./routes/services')(app)
-const registerRouter = require('./routes/register')(app)
-const dataRouter = require('./routes/data')(app)
+} = require('./routes/auth') 
+const cartasRouter = require('./routes/cartas')
+const serviceRouter = require('./routes/services')
+const registerRouter = require('./routes/register')
+const dataRouter = require('./routes/data')
 
 
 
