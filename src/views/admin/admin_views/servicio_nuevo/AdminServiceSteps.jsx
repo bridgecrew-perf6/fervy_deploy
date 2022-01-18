@@ -425,8 +425,6 @@ const Locations = () => {
 
     const completeOrigin = () => {
         setShowDestiny(true)
-        console.log(state)
-        console.log()
         if((state.localidad === ('' || 'NULL'))&&(state.municipio === ('' || 'NULL'))){
             console.log("entrando doble null")
             datosPorte.Ubicaciones.push({
@@ -499,7 +497,23 @@ const Locations = () => {
     }
     const completeDestiny = () => {
         
-        if(state.municipio === (''||'NULL')){
+        if((state.localidad === (''||'NULL')) && (state.municipio === (''||'NULL'))){
+            console.log("Doble null")  
+            datosPorte.Ubicaciones.push({
+                "TipoUbicacion": "Destino",
+                "RFCRemitenteDestinatario": locations.RFCRemitenteDestinatario,
+                "FechaHoraSalidaLlegada": locations.FechaHoraSalidaLlegada,
+                "DistanciaRecorrida":"1",
+                "Domicilio": {
+                    "Calle": locations.Domicilio.Calle,
+                    "Estado": state.estado,
+                    "Pais": "MEX",
+                    "CodigoPostal": locations.Domicilio.CodigoPostal,
+                }
+            })
+            console.log("Cargado exitosamente")
+        } else if(state.municipio === (''||'NULL')){
+            console.log("Municipio null")
             datosPorte.Ubicaciones.push({
                 "TipoUbicacion": "Destino",
                 "RFCRemitenteDestinatario": locations.RFCRemitenteDestinatario,
@@ -513,23 +527,7 @@ const Locations = () => {
                     "Localidad": state.localidad
                 }
             })
-            console.log("Cargado exitosamente")
-            return
-        } else if((state.localidad === (''||'NULL')) && (state.municipio === (''||'NULL'))){
-            datosPorte.Ubicaciones.push({
-                "TipoUbicacion": "Destino",
-                "RFCRemitenteDestinatario": locations.RFCRemitenteDestinatario,
-                "FechaHoraSalidaLlegada": locations.FechaHoraSalidaLlegada,
-                "DistanciaRecorrida":"1",
-                "Domicilio": {
-                    "Calle": locations.Domicilio.Calle,
-                    "Estado": state.estado,
-                    "Pais": "MEX",
-                    "CodigoPostal": locations.Domicilio.CodigoPostal,
-                }
-            })
-            console.log("Cargado exitosamente")
-            return
+            console.log("Cragado exitosamente")
         } else if (state.localidad === (''||'NULL')){
             datosPorte.Ubicaciones.push({
                 "TipoUbicacion": "Destino",
@@ -545,7 +543,6 @@ const Locations = () => {
                 }
             })
             console.log("Cargado exitosamente")
-            return
         } else {
             datosPorte.Ubicaciones.push(
                 {
