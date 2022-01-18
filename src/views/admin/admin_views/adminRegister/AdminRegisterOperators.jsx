@@ -1,6 +1,6 @@
 import { Button, TextField, Typography } from '@mui/material'
 import { Box } from '@mui/system'
-import axios from 'axios'
+import api from '../../../../axios'
 import React, { useState } from 'react'
 import history from '../../../../history'
 
@@ -64,7 +64,7 @@ const AdminRegisterOperators = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(operator)
-        axios.post("http://192.168.100.110:9999/register/operator", {
+        api.post("/api/register/operator", {
             datos:operator   
         }).then((res) => {
             if(res.status === 201){

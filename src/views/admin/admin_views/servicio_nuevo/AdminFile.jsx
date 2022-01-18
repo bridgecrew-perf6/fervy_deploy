@@ -1,7 +1,6 @@
 import { Button, Input, Typography, Stepper, Step, StepLabel } from '@mui/material'
 import { Box } from '@mui/system'
 import { DataGrid } from '@mui/x-data-grid'
-import axios from 'axios'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { SelectOperator, SelectTransport,CompleteInvoice, datosTransporte, datosFactura } from './AdminFileSteps'
@@ -63,7 +62,7 @@ const AdminFile = () => {
         )
 
         //*Envío de datos a través de axios
-        let response = await axios.post(`http://${ip}:9999/carta/cartaPorte`,formData, {
+        let response = await api.post(`/api/carta/cartaPorte`,formData, {
             headers: {
                 'Content-type':'multipart/form-data'
             }

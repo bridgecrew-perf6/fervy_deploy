@@ -64,7 +64,7 @@ app.use(cors());
     
 
     //*routing in production
-    app.get('*', (req, res) => {
+    app.get('/^\/(?!api).*/', (req, res) => {
       res.sendFile(path.join(__dirname, '..', 'build', 'index.html')) 
     })
     
@@ -72,17 +72,17 @@ app.use(cors());
     * CRUD de cartas porte 
     */
    // app.use('/carta',  isAuthenticated, isAuthorized(roles.user),cartasRouter)
-   app.use('/carta',  cartasRouter)
-   app.use('/service', serviceRouter)
+   app.use('/api/carta',  cartasRouter)
+   app.use('/api/service', serviceRouter)
    // app.use('/service',  isAuthenticated, isAuthorized(roles.user),serviceRouter)
    // app.use('/register',  isAuthenticated, isAuthorized(roles.user),registerRouter)
-  app.use('/register',registerRouter)
+  app.use('/api/register',registerRouter)
 /*
 * QUERIES
  */ 
 // app.use('/data',  isAuthenticated, isAuthorized(roles.user),operatorsRouter)
-app.use('*/data',dataRouter)
-app.use('/auth',authRouter);
+app.use('/api/data',dataRouter)
+app.use('/api/auth',authRouter);
 // app.get("/carta", isAuthenticated, isAuthorized(roles.user), getAllCartas);
 // app.get("/carta/:id", isAuthenticated, isAuthorized(roles.user), getCartaById);
 // app.delete("/carta/:id", isAuthenticated, isAuthorized(roles.user), deleteCarta);

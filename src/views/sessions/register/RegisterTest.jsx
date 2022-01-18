@@ -11,13 +11,12 @@ import {Step1} from './components/Step1'
 import {Step2} from './components/Step2'
 import {Step3} from './components/Step3'
 import history from '../../../history'
-import axios from 'axios'
 
 const steps = ['Introduce tus datos fiscales', 'Añade tus productos', 'Crea una contraseña'];
 
 const RegisterTest = () => {
     const handleTest =async ()=>{
-      let resp = await axios.post('http://localhost:9999/auth/signup')
+      let resp = await api.post('/api/auth/signup')
       if(resp.status !== 201){
         console.log("No se ha creado el usuario")
         return

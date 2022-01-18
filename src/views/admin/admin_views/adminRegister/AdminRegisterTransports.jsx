@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {Box, TextField, Button, Typography} from '@mui/material'
-import axios from 'axios'
 import history from '../../../../history'
+import api from '../../../../axios'
 
 const AdminRegisterTransports = () => {
     const [transport, setTransport] = useState({})
@@ -15,7 +15,7 @@ const AdminRegisterTransports = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(transport)
-        axios.post("http://192.168.100.110:9999/register/transport", {
+        api.post("/api/register/transport", {
             datos:transport   
         }).then((res) => {
             if(res.status === 201){

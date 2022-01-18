@@ -1,7 +1,7 @@
 import axios from "axios";
 
 let api = new axios.create({
-    "baseURL": "http://localhost:9999",
+    "baseURL": "https://radiant-mountain-23167.herokuapp.com",
     headers: {
         "Content-type": "application/json"
     }

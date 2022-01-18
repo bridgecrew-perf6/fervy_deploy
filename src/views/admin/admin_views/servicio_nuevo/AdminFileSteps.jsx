@@ -3,12 +3,10 @@ import { DataGrid } from '@mui/x-data-grid'
 import {operators_col, trucks_col} from './dummyData'
 import { Autocomplete, 
     CircularProgress, 
-    //Button, 
     TextField, 
     Typography } from '@mui/material'
 import { Box } from '@mui/system'
-import axios from 'axios'
-// import axios from 'axios'
+import api from '../../../../axios'
 
 let datosPorte = {
     operador:[],
@@ -37,13 +35,6 @@ let datosFactura = {
     conceptos:{},
 }
 
-let router = [
-    "192.168.100.110",
-    "localhost"
-]
-
-const ip = router[0]
-
 
 const SelectOperator = () => {
     const [operatorRows, setOperatorRows] = useState([])
@@ -61,7 +52,7 @@ const SelectOperator = () => {
 
     useEffect(() => {
         const getData = async () => {
-        let operatorData =  await axios.get(`http://${ip}:9999/data/operators`)
+        let operatorData =  await api.get(`/api/data/operators`)
         return operatorData
         }
         getData()
@@ -129,7 +120,7 @@ const SelectTransport = () => {
 
     useEffect(() => {
         const getData = async () => {
-        let operatorData =  await axios.get(`http://${ip}:9999/data/transports`)
+        let operatorData =  await api.get(`/api/data/transports`)
         return operatorData
         }
         getData()

@@ -5,20 +5,11 @@ import { Button, CircularProgress, Input, InputLabel, TextField, Typography, Aut
 import {DateTimePicker} from '@mui/lab'
 import AdapterDateFns from '@mui/lab/AdapterDateFns'
 import LocalizationProvider from '@mui/lab/LocalizationProvider'
-import axios from 'axios'
 import { Box } from '@mui/system'
 import history from '../../../../history'
+import api from '../../../../axios'
 // import { Box } from '@mui/system'
 // import axios from 'axios'
-
-let router = [
-    "192.168.100.110",
-    "localhost",
-    window.location.href
-]
-
-const ip = router[2]
-
 
 let datosPorte = {
     operador:[],
@@ -66,7 +57,7 @@ const SelectOperator = () => {
 
     useEffect(() => {
         const getData = async () => {
-        let operatorData =  await axios.get(`/data/operators`)
+        let operatorData =  await api.get(`/api/data/operators`)
         return operatorData
         }
         getData()
@@ -136,7 +127,7 @@ const SelectTransport = () => {
 
         useEffect(() => {
             const getData = async () => {
-            let transportData =  await axios.get(`http://${ip}:8000/data/transports`)
+            let transportData =  await api.get(`/api/data/transports`)
             return transportData
             }
             getData()
@@ -227,7 +218,7 @@ const Products = () => {
             e.target.files[0]
         )
 
-        let response = await axios.post(`http://${ip}:8000/service/productsFile`, formData, {headers: {
+        let response = await api.post(`/api/service/productsFile`, formData, {headers: {
             "Content-type":"multipart/formData"
         }}).then((err, res) => {
             return err ? err : res
