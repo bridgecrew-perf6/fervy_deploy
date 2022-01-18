@@ -5,14 +5,8 @@ import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { SelectOperator, SelectTransport,CompleteInvoice, datosTransporte, datosFactura } from './AdminFileSteps'
 import history from '../../../../history'
+import api from '../../../../axios'
 // import jsonPorteFormat from './porte.json'
-
-let router = [
-    "192.168.100.110",
-    "localhost"
-]
-
-const ip = router[0]
 
 
 //*Arreglo de objetos que determinan las columnas de la tabla de productos que se muestran al procesar el XML

@@ -11,6 +11,7 @@ import {Step1} from './components/Step1'
 import {Step2} from './components/Step2'
 import {Step3} from './components/Step3'
 import history from '../../../history'
+import api from '../../../axios'
 
 const steps = ['Introduce tus datos fiscales', 'Añade tus productos', 'Crea una contraseña'];
 
