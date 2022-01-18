@@ -64,7 +64,7 @@ app.use(cors());
     
 
     //*routing in production
-    app.get('/^\/(?!api).*/', (req, res) => {
+    app.get(/^\/(?!api).*/, (req, res) => {
       res.sendFile(path.join(__dirname, '..', 'build', 'index.html')) 
     })
     
