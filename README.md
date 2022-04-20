@@ -1,2 +1,2 @@
 # fervy_deploy
-App for crete invoices and process files
+App to crete invoices and process files
